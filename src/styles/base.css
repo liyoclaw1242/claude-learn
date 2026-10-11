@@ -1,0 +1,124 @@
+:root {
+  --bg: #0b0d12;
+  --panel: #12151d;
+  --line: #232838;
+  --text: #d8dce6;
+  --muted: #8a92a6;
+  --user: #f2b84b;
+  --harness: #5ec8f2;
+  --model: #c08bff;
+  --tool: #6ee7a8;
+  --ctx: #ff7a8a;
+  --mono: "JetBrains Mono", "SF Mono", Menlo, monospace;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 15px/1.75 -apple-system, "PingFang TC", "Noto Sans TC", sans-serif;
+}
+
+a { color: var(--harness); }
+
+code, pre { font-family: var(--mono); font-size: 13px; }
+
+pre {
+  background: #0f1219;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 14px 16px;
+  overflow-x: auto;
+  line-height: 1.55;
+}
+
+:not(pre) > code {
+  background: #1a1f2b;
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+
+.tag-user { color: var(--user); }
+.tag-harness { color: var(--harness); }
+.tag-model { color: var(--model); }
+.tag-tool { color: var(--tool); }
+.tag-ctx { color: var(--ctx); }
+
+article {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 48px 24px 120px;
+}
+
+article h2 {
+  margin-top: 56px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+
+article blockquote {
+  margin: 20px 0;
+  padding: 12px 18px;
+  border-left: 3px solid var(--model);
+  background: #151223;
+  color: #cfc4e6;
+}
+
+table { border-collapse: collapse; width: 100%; margin: 16px 0; }
+th, td { border: 1px solid var(--line); padding: 8px 10px; text-align: left; vertical-align: top; }
+th { background: #161a24; }
+
+/* ---------- 首頁 ---------- */
+.chapters { list-style: none; padding: 0; }
+.chapters li {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin: 12px 0;
+  background: var(--panel);
+}
+.chapters li.todo { opacity: .45; }
+.chapters .no { font-family: var(--mono); color: var(--muted); margin-right: 10px; }
+.chapters .film { display: block; color: var(--muted); font-size: 13px; }
+
+/* ---------- 章節舞台 ---------- */
+.stage { display: grid; grid-template-columns: 1fr 440px; height: 100vh; border-bottom: 1px solid var(--line); }
+.canvas-wrap { position: relative; overflow: hidden; }
+.hud { position: absolute; left: 16px; top: 12px; color: var(--muted); font-size: 12px; z-index: 1; }
+.hud a { color: var(--muted); }
+
+.label3d {
+  font: 600 13px/1.2 -apple-system, "PingFang TC", sans-serif;
+  padding: 3px 8px; border-radius: 6px;
+  background: rgba(10, 12, 18, .75); border: 1px solid #2c3244;
+  white-space: nowrap; pointer-events: none; user-select: none;
+}
+.label3d small { display: block; font-weight: 400; color: var(--muted); font-size: 11px; }
+
+.panel { background: var(--panel); border-left: 1px solid var(--line); display: flex; flex-direction: column; min-height: 0; }
+.panel header { padding: 16px 18px 8px; }
+.panel .stepno { font-family: var(--mono); color: var(--muted); font-size: 12px; }
+.panel h3 { margin: 4px 0 6px; font-size: 18px; }
+.panel .desc { padding: 0 18px; font-size: 14px; }
+.panel .desc p { margin: 6px 0; }
+.controls { display: flex; gap: 8px; padding: 12px 18px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.controls button {
+  flex: 1; background: #1b2030; color: var(--text); border: 1px solid #2c3244;
+  border-radius: 6px; padding: 7px 0; cursor: pointer; font-size: 13px;
+}
+.controls button:hover { background: #242a3d; }
+.msgs-title { padding: 10px 18px 4px; font-size: 12px; color: var(--muted); display: flex; justify-content: space-between; }
+.msgs { flex: 1; overflow-y: auto; padding: 0 18px 18px; min-height: 0; }
+.msg { border: 1px solid var(--line); border-radius: 6px; margin: 8px 0; padding: 8px 10px; font-family: var(--mono); font-size: 12px; line-height: 1.5; white-space: pre-wrap; word-break: break-all; }
+.msg .role { font-weight: 700; }
+.msg.new { border-color: var(--ctx); box-shadow: 0 0 0 1px var(--ctx) inset; }
+.msg.sys { opacity: .8; }
+
+/* ---------- 用量條（02） ---------- */
+.meter { margin: 8px 0 12px; }
+.meter-head { display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); font-family: var(--mono); }
+.meter-bar { position: relative; display: flex; height: 14px; background: #1a1f2b; border-radius: 4px; overflow: hidden; margin-top: 4px; }
+.meter-bar > div:not(.meter-threshold) { height: 100%; transition: width .5s, opacity .5s; }
+.meter-threshold { position: absolute; top: 0; bottom: 0; width: 2px; background: var(--ctx); }
