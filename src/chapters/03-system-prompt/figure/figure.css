@@ -1,0 +1,16 @@
+/* 第 03 章的等角圖卡（版面同第 01 章） */
+.ch03-fig-wrap { position: absolute; inset: 0; container-type: size; display: grid; place-items: center; overflow: hidden; }
+.ch03-fig { width: min(100cqw - 32px, (100cqh - 150px) * 1.6); }
+.ch03-fig .iso-figure { margin: 0; }
+.ch03-fig .iso-plate { padding: 44px 20px; }
+.ch03-fig .iso-legend { font-size: 12px; margin-top: 10px; }
+.ch03-fig.iso { --anatomy-hi: #e2e2e2; --anatomy-mid: #7d7d7d; --anatomy-lo: #4a4a4a; --anatomy-faint: #313131; }
+@container (max-width: 560px) {
+  .ch03-fig { width: min(100cqw - 12px, (100cqh - 60px) * 1.4); }
+  .ch03-fig .iso-plate { padding: 26px 0 24px; overflow: hidden; }
+  .ch03-fig .iso-plate-corners { inset: 12px 12px; }
+  .ch03-fig .iso-plate-corner[data-corner="hint"] { display: none; }
+  .ch03-fig .iso-legend { display: none; }
+  .ch03-fig .iso-svg { width: 112%; margin: -2% -6%; }
+}
+.m-figure .ch03-fig-wrap { top: 40px; }

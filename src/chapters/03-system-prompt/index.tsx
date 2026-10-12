@@ -1,5 +1,5 @@
 import ChapterStage from "../../components/ChapterStage";
-import Scene from "./Scene";
+import SystemPromptFigure from "./figure/Figure";
 import Article from "./Article";
 import { KIND_COLOR, LAYERS, steps, type Section, type Step } from "./steps";
 
@@ -44,7 +44,7 @@ export default function SystemPromptChapter() {
     <>
       <ChapterStage
         steps={steps}
-        scene={(step, i) => <Scene step={step} stepIndex={i} />}
+        scene={(_, i) => <div className="ch03-fig-wrap"><SystemPromptFigure steps={steps} index={i} /></div>}
         panelTitle="實際送出的請求（內容為示意）"
         panelMeta={(step) => (step.cache ? CACHE_TEXT[step.cache] : `${step.layers.length} 層`)}
         panel={(step) => <RequestView step={step} />}
