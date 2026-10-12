@@ -55,8 +55,8 @@ export default function ContextWindowChapter() {
             <BlockList blocks={step.main} />
           </>
         )}
+        article={<Article />}
       />
-      <Article />
     </>
   );
 }

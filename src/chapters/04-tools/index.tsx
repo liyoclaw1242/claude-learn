@@ -27,8 +27,8 @@ export default function ToolsChapter() {
             {step.panelResult && <Block role="tool_result" color="#6ee7a8" text={step.panelResult} isNew />}
           </>
         )}
+        article={<Article />}
       />
-      <Article />
     </>
   );
 }

@@ -48,8 +48,8 @@ export default function SystemPromptChapter() {
         panelTitle="實際送出的請求（內容為示意）"
         panelMeta={(step) => (step.cache ? CACHE_TEXT[step.cache] : `${step.layers.length} 層`)}
         panel={(step) => <RequestView step={step} />}
+        article={<Article />}
       />
-      <Article />
     </>
   );
 }

@@ -47,8 +47,8 @@ export default function PermissionsHooksChapter() {
         panelTitle="Harness 處理紀錄（示意）"
         panelMeta={(step) => (step.mode ? `模式：${step.mode}` : "")}
         panel={(step) => <HarnessLog log={step.log} />}
+        article={<Article />}
       />
-      <Article />
     </>
   );
 }

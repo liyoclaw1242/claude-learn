@@ -64,7 +64,7 @@ export const steps: Step[] = [
     fly: { from: "user", to: "harness", color: COLORS.user }, focus: "harness", msgs: [SYS, U1], newFrom: 1,
     desc: (<>
       <p>你在終端機輸入一句話。Harness 把它包成 <code>{'{role: "user"}'}</code> 加到 messages 尾端。</p>
-      <p>右下的紅色塔多了一層 —— 這疊東西就是模型「能看到的全部世界」。</p>
+      <p>滑台上的卡片多了一張 —— 這疊卡就是模型「能看到的全部世界」。</p>
     </>),
   },
   {
@@ -96,7 +96,7 @@ export const steps: Step[] = [
     fly: { from: "Read", to: "harness", color: COLORS.tool }, focus: "harness", msgs: [SYS, U1, A1, R1], newFrom: 3,
     desc: (<>
       <p>檔案內容被包成 <code>tool_result</code>（用 <code>tool_use_id</code> 對上剛才的請求），以 <b>user 角色</b>加進 messages。</p>
-      <p>看塔：這一層特別厚。<b>工具結果通常是 context 最大的消耗者</b> —— 劇本全文就在這裡。</p>
+      <p>看卡疊：這張卡特別厚（卡的厚度 = token 數）。<b>工具結果通常是 context 最大的消耗者</b> —— 劇本全文就在這裡。</p>
     </>),
   },
   {

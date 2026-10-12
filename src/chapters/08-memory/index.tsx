@@ -54,8 +54,8 @@ export default function MemoryChapter() {
         scene={(step, i) => <Scene step={step} stepIndex={i} />}
         panelTitle="context 與記憶目錄（內容為示意）"
         panel={(step) => <Panel step={step} />}
+        article={<Article />}
       />
-      <Article />
     </>
   );
 }

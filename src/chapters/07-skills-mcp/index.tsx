@@ -43,8 +43,8 @@ export default function SkillsMcpChapter() {
         panelTitle="技能狀態與 context 內容（示意）"
         panelMeta={(step) => `${step.ctx.length} 塊`}
         panel={(step) => <Panel step={step} />}
+        article={<Article />}
       />
-      <Article />
     </>
   );
 }

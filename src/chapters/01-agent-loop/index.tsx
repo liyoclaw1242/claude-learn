@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import ChapterStage from "../../components/ChapterStage";
-import Scene from "./Scene";
+import AgentLoopFigure from "./figure/Figure";
 import Article from "./Article";
 import { steps, type MsgKind, type Step } from "./steps";
 
@@ -35,12 +35,12 @@ export default function AgentLoop() {
     <>
       <ChapterStage
         steps={steps}
-        scene={(step, i) => <Scene step={step} stepIndex={i} />}
+        scene={(_, i) => <div className="ch01-fig-wrap"><AgentLoopFigure steps={steps} index={i} /></div>}
         panelTitle="messages[]（Harness 手上的整份對話）"
         panelMeta={(step) => `≈ ${step.msgs.reduce((a, m) => a + m.tok * 10, 0).toLocaleString()} tokens`}
         panel={(step) => <MessageList step={step} />}
+        article={<Article />}
       />
-      <Article />
     </>
   );
 }

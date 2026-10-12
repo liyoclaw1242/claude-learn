@@ -44,8 +44,8 @@ export default function SubagentsChapter() {
             ))}
           </>
         )}
+        article={<Article />}
       />
-      <Article />
     </>
   );
 }

@@ -41,8 +41,8 @@ export default function ArchitectureChapter() {
         panelTitle="Claude Film 架構（設計提案）"
         panelMeta={(step) => (step.trace ? "請求走查" : `${step.visible.length} 個元件`)}
         panel={(step) => <ModuleList step={step} />}
+        article={<Article />}
       />
-      <Article />
     </>
   );
 }

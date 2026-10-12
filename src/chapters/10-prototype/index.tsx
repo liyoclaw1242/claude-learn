@@ -19,8 +19,8 @@ export default function PrototypeChapter() {
             {step.snippet}
           </pre>
         )}
+        article={<Article />}
       />
-      <Article />
     </>
   );
 }
