@@ -1,0 +1,21 @@
+/* 第 02 章的等角圖卡（版面同第 01 章） */
+.ch02-fig-wrap { position: absolute; inset: 0; container-type: size; display: grid; place-items: center; overflow: hidden; }
+.ch02-fig { width: min(100cqw - 32px, (100cqh - 150px) * 1.52); }
+.ch02-fig .iso-figure { margin: 0; }
+.ch02-fig .iso-plate { padding: 44px 20px; }
+.ch02-fig .iso-legend { font-size: 12px; margin-top: 10px; }
+.ch02-fig.iso { --anatomy-hi: #e2e2e2; --anatomy-mid: #7d7d7d; --anatomy-lo: #4a4a4a; --anatomy-faint: #313131; }
+/* 注意力稀釋：卡仍是實心，只是面與邊都暗一階（不用透明度，避免看穿） */
+.ch02-dim .iso-top { fill: var(--anatomy-shade-1); }
+.ch02-dim .iso-shade { fill: var(--anatomy-shade-0); }
+.ch02-dim .iso-edge { stroke: var(--anatomy-lo); }
+.ch02-dim .iso-line:not(.iso-edge) { stroke: var(--anatomy-faint); }
+@container (max-width: 560px) {
+  .ch02-fig { width: min(100cqw - 12px, (100cqh - 60px) * 1.4); }
+  .ch02-fig .iso-plate { padding: 26px 0 24px; overflow: hidden; }
+  .ch02-fig .iso-plate-corners { inset: 12px 12px; }
+  .ch02-fig .iso-plate-corner[data-corner="hint"] { display: none; }
+  .ch02-fig .iso-legend { display: none; }
+  .ch02-fig .iso-svg { width: 112%; margin: -2% -6%; }
+}
+.m-figure .ch02-fig-wrap { top: 40px; }

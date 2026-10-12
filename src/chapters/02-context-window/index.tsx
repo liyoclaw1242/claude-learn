@@ -1,5 +1,5 @@
 import ChapterStage from "../../components/ChapterStage";
-import Scene from "./Scene";
+import ContextFigure from "./figure/Figure";
 import Article from "./Article";
 import { KIND_COLOR, KIND_NAME, THRESHOLD, steps, type Block } from "./steps";
 
@@ -46,7 +46,7 @@ export default function ContextWindowChapter() {
     <>
       <ChapterStage
         steps={steps}
-        scene={(step, i) => <Scene step={step} stepIndex={i} />}
+        scene={(_, i) => <div className="ch02-fig-wrap"><ContextFigure steps={steps} index={i} /></div>}
         panelTitle="context 用量（比例示意，非實測）"
         panel={(step) => (
           <>
