@@ -1,5 +1,5 @@
 import ChapterStage from "../../components/ChapterStage";
-import Scene from "./Scene";
+import MemoryFigure from "./figure/Figure";
 import Article from "./Article";
 import { CARDS, CARD_COLOR, KIND_COLOR, KIND_NAME, SESSION_NAME, steps, type SessionId, type Step } from "./steps";
 
@@ -51,7 +51,7 @@ export default function MemoryChapter() {
     <>
       <ChapterStage
         steps={steps}
-        scene={(step, i) => <Scene step={step} stepIndex={i} />}
+        scene={(_, i) => <div className="ch08-fig-wrap"><MemoryFigure steps={steps} index={i} /></div>}
         panelTitle="context 與記憶目錄（內容為示意）"
         panel={(step) => <Panel step={step} />}
         article={<Article />}

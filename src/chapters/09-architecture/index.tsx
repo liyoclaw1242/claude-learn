@@ -1,5 +1,5 @@
 import ChapterStage from "../../components/ChapterStage";
-import Scene from "./Scene";
+import ArchitectureFigure from "./figure/Figure";
 import Article from "./Article";
 import { MODULES, OWNER_COLOR, steps, type Step } from "./steps";
 
@@ -37,7 +37,7 @@ export default function ArchitectureChapter() {
     <>
       <ChapterStage
         steps={steps}
-        scene={(step, i) => <Scene step={step} stepIndex={i} />}
+        scene={(_, i) => <div className="ch09-fig-wrap"><ArchitectureFigure steps={steps} index={i} /></div>}
         panelTitle="Claude Film 架構（設計提案）"
         panelMeta={(step) => (step.trace ? "請求走查" : `${step.visible.length} 個元件`)}
         panel={(step) => <ModuleList step={step} />}

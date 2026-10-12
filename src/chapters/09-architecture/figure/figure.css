@@ -1,0 +1,21 @@
+/* 第 09 章的等角圖卡（版面同第 01 章） */
+.ch09-fig-wrap { position: absolute; inset: 0; container-type: size; display: grid; place-items: center; overflow: hidden; }
+.ch09-fig { width: min(100cqw - 32px, (100cqh - 150px) * 1.6); }
+.ch09-fig .iso-figure { margin: 0; }
+.ch09-fig .iso-plate { padding: 44px 20px; }
+.ch09-fig .iso-legend { font-size: 12px; margin-top: 10px; }
+.ch09-fig.iso { --anatomy-hi: #e2e2e2; --anatomy-mid: #7d7d7d; --anatomy-lo: #4a4a4a; --anatomy-faint: #313131; }
+/* 底板上的狀態燈：沒亮時是暗色實心 */
+.ch09-lamp[data-on="x"] .iso-top { fill: var(--anatomy-shade-0); }
+.ch09-lamp[data-on="x"] .iso-shade { fill: var(--anatomy-shade-0); }
+.ch09-lamp[data-on="x"] .iso-edge { stroke: var(--anatomy-lo); }
+.ch09-lamp[data-on=""] .iso-top { fill: var(--anatomy-hi); }
+@container (max-width: 560px) {
+  .ch09-fig { width: min(100cqw - 12px, (100cqh - 60px) * 1.45); }
+  .ch09-fig .iso-plate { padding: 26px 0 24px; overflow: hidden; }
+  .ch09-fig .iso-svg { width: 116%; margin: -3% -8%; }
+  .ch09-fig .iso-plate-corners { inset: 12px 12px; }
+  .ch09-fig .iso-plate-corner[data-corner="hint"] { display: none; }
+  .ch09-fig .iso-legend { display: none; }
+}
+.m-figure .ch09-fig-wrap { top: 40px; }

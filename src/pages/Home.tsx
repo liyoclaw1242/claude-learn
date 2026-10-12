@@ -9,7 +9,7 @@ export default function Home() {
       <h1>Claude Code 原理筆記</h1>
       <p>
         目標：理解 Claude Code 的核心機制，最後映射成一套給影視編劇用的 <b>Claude Film</b>。<br />
-        每章 = 一個 three.js 互動場景 + 一份文字筆記 + 「對 Claude Film 的設計啟示」。
+        每章 = 一台會動的等角機器圖（一個機構對應一個概念）+ 一份文字筆記 + 「對 Claude Film 的設計啟示」。
       </p>
       <ol className="chapters">
         {chapters.map((c) => (

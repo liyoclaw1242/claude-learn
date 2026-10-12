@@ -63,7 +63,7 @@ export default function Article() {
         <code>settings.json</code> 裡的 hooks 都是 Claude Code 既有的慣例。在寫任何程式碼之前，就能先驗證規則和流程設計對不對。</p>
 
       <h2>第 3 層：一個請求的完整資料流</h2>
-      <p>以場景最後一步的「把第 3 集結尾改成開放式」為例：</p>
+      <p>以圖中第 9 步的「把第 3 集結尾改成開放式」為例：</p>
       <table>
         <thead><tr><th>#</th><th>發生什麼</th><th>由誰負責</th></tr></thead>
         <tbody>
@@ -121,7 +121,7 @@ export default function Article() {
       <h2>對 Claude Film 的設計啟示</h2>
       <ol>
         <li><b>不要重造 Harness。</b> 迴圈、壓縮、權限、子代理這些基礎建設已經有成熟實作。產品差異化在劇本領域的那一層。</li>
-        <li><b>價值集中在三件事：劇本工具、規則內容、記憶結構。</b> 場景最後一步的金色和綠色元件，就是 Claude Film 的護城河。</li>
+        <li><b>價值集中在三件事：劇本工具、規則內容、記憶結構。</b> 圖中最後一步站在刻線底板上的機器（右側面板的金色和綠色），就是 Claude Film 的護城河。</li>
         <li><b>「建議」和「保證」要分清楚。</b> 每一條規則都要問：違反了會怎樣？後果嚴重的，就從 CLAUDE.md 搬到 hook。</li>
         <li><b>記憶的難點是回寫，不是儲存。</b> 每一個會改變設定的動作，都要有對應的更新路徑。</li>
         <li><b>先用 Claude Code 驗證設計。</b> 資料夾結構對了，同一套規則和技能幾乎可以直接搬進 Agent SDK 版本。</li>

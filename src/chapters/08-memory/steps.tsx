@@ -26,7 +26,7 @@ export type Block = {
   /** 相同 id 的區塊在步驟之間平滑變形 */
   id: string;
   kind: BlockKind;
-  /** 3D 高度（示意，不是 token 數） */
+  /** 卡的厚度（示意，不是 token 數） */
   h: number;
   label: string;
 };
@@ -123,8 +123,8 @@ export const steps: Step[] = [
     sessions: { d1: { state: "active", blocks: [BASE("d1")] }, d2: idle, d3: idle },
     cards: {},
     desc: (<>
-      <p>上面的三個玻璃箱是<b>三天的工作</b>，每個箱子是一次 session 的 context window。</p>
-      <p>第 02 章說過：context 是模型唯一的記憶。可是它<b>每次開新對話都會清空</b>。第 1 天開場，箱子裡只有 system prompt 和 CLAUDE.md。</p>
+      <p>上面沿著時間軸排了三座卡架，是<b>三天的工作</b>：每座卡架是一次 session 的 context window。右邊的檔案櫃是記憶目錄。</p>
+      <p>第 02 章說過：context 是模型唯一的記憶。可是它<b>每次開新對話都會清空</b>。第 1 天開場，卡架上只有 system prompt 和 CLAUDE.md 那張卡。</p>
       <p>這章要看的是：<b>跨過那條「清空」的線，什麼東西能留下來？</b></p>
     </>),
   },
@@ -143,7 +143,7 @@ export const steps: Step[] = [
     cards: { idx: "hot", user: "hot", fb: "hot", proj: "hot" },
     flight: { from: "d1", to: "fb", color: MEM_COLOR },
     desc: (<>
-      <p>模型判斷這些資訊<b>下次還用得到</b>，就用一般的檔案工具把它們寫進記憶目錄（下方的檔案庫）。</p>
+      <p>模型判斷這些資訊<b>下次還用得到</b>，就用一般的檔案工具把它們寫進記憶目錄（右邊的檔案櫃，一則記憶一個抽屜，櫃頂托盤是索引卡）。</p>
       <p>Claude Code 的自動記憶是<b>一則記憶一個檔案</b>，再加一份 <code>MEMORY.md</code> 當索引，每則一行。</p>
       <p>每個檔案都標了類型：<b>user</b>（你是誰）、<b>feedback</b>（你的修正與偏好）、<b>project</b>（進行中的事）、<b>reference</b>（外部資料在哪）。</p>
     </>),
@@ -155,7 +155,7 @@ export const steps: Step[] = [
     transcripts: ["d1"],
     desc: (<>
       <p>關掉終端機，第 1 天的 context 就清空了。但有兩樣東西留在磁碟上：</p>
-      <p><b>1. transcript</b>（箱子下方的膠卷）：整段對話的逐字紀錄。用 <code>claude --continue</code> 或 <code>--resume</code> 可以把它<b>整段載回</b> context，接著聊。</p>
+      <p><b>1. transcript</b>（卡架前方托架上的片盒）：整段對話的逐字紀錄。用 <code>claude --continue</code> 或 <code>--resume</code> 可以把它<b>整段載回</b> context，接著聊。</p>
       <p><b>2. 記憶檔</b>：只留下精選過的幾件事。下次開<b>新</b>對話時，這些才是會帶過去的東西。</p>
     </>),
   },
@@ -189,7 +189,7 @@ export const steps: Step[] = [
     transcripts: ["d1"],
     flight: { from: "d2", to: "proj", color: "#ff7a8a" },
     desc: (<>
-      <p>你說：「小美從第 5 集起改成 30 歲。」記憶裡寫的還是 28 歲，<b>這則記憶過時了</b>。</p>
+      <p>你說：「小美從第 5 集起改成 30 歲。」記憶裡寫的還是 28 歲，<b>這則記憶過時了</b>（檔案櫃裡那個抽屜帶紅框、被拉出來改）。</p>
       <p>正確的做法是<b>更新那個檔案</b>，而不是再新增一則「小美 30 歲」。兩則互相矛盾的記憶，比沒有記憶更糟。</p>
       <p>Claude Code 寫入記憶檔時會記錄修改時間，讓人和模型都看得出這則記憶有多新。</p>
     </>),
@@ -201,7 +201,7 @@ export const steps: Step[] = [
     cardContent: { proj: "小美 30 歲（第 5 集起；之前 28 歲）" },
     transcripts: ["d1"],
     desc: (<>
-      <p>「第 4 集有哪些場次」要不要記？<b>不要</b>。直接讀劇本就知道，記下來反而會跟劇本不同步。</p>
+      <p>「第 4 集有哪些場次」要不要記？<b>不要</b>，它落進檔案櫃前方的退件盤。直接讀劇本就知道，記下來反而會跟劇本不同步。</p>
       <p>判斷原則：<b>只記從原始資料推不出來的事</b>。你的偏好、你的修正、劇本之外的決策、外部資料在哪裡。</p>
     </>),
   },

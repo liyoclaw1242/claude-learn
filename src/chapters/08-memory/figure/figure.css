@@ -1,0 +1,16 @@
+/* 第 08 章的等角圖卡（版面同第 01 章） */
+.ch08-fig-wrap { position: absolute; inset: 0; container-type: size; display: grid; place-items: center; overflow: hidden; }
+.ch08-fig { width: min(100cqw - 32px, (100cqh - 150px) * 1.68); }
+.ch08-fig .iso-figure { margin: 0; }
+.ch08-fig .iso-plate { padding: 44px 20px; }
+.ch08-fig .iso-legend { font-size: 12px; margin-top: 10px; }
+.ch08-fig.iso { --anatomy-hi: #e2e2e2; --anatomy-mid: #7d7d7d; --anatomy-lo: #4a4a4a; --anatomy-faint: #313131; }
+@container (max-width: 560px) {
+  .ch08-fig { width: min(100cqw - 12px, (100cqh - 60px) * 1.5); }
+  .ch08-fig .iso-plate { padding: 26px 0 24px; overflow: hidden; }
+  .ch08-fig .iso-plate-corners { inset: 12px 12px; }
+  .ch08-fig .iso-plate-corner[data-corner="hint"] { display: none; }
+  .ch08-fig .iso-legend { display: none; }
+  .ch08-fig .iso-svg { width: 116%; margin: -3% -8%; }
+}
+.m-figure .ch08-fig-wrap { top: 40px; }

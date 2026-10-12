@@ -108,7 +108,8 @@ export const steps: Step[] = [
     visible: upTo("core"),
     focus: "core",
     desc: (<>
-      <p>這章把前八章拼成一張圖。先從最核心的東西開始：<b>Agent Loop</b>（第 01 章）。</p>
+      <p>這章把前八章拼成一張工作台。先從最核心的東西開始：<b>Agent Loop</b>（第 01 章）—— 左邊的模型機櫃，加上前方導軌上的 Harness 滑台。</p>
+      <p>之後每一步，前面某一章的機器（縮小版）會從上方落下、裝到導軌後方。右前方那張桌子是編劇 / 導演。</p>
       <p>模型負責決策、Harness 負責執行。Claude Film 的所有功能，都是掛在這個迴圈的某個插入點上。</p>
     </>),
   },
@@ -181,7 +182,7 @@ export const steps: Step[] = [
     path: PATH,
     trace: TRACE,
     desc: (<>
-      <p>一個真實請求跑過整個架構。封包經過的每一站，右側面板都有說明。</p>
+      <p>一個真實請求跑過整個架構：滑台載著一張請求卡，沿導軌依序停靠每一站，走過的站底板上的燈會亮起。右側面板有每一站的說明。</p>
       <p>注意它<b>回到 Agent Loop 很多次</b>：每一次都是一輪「呼叫模型 → 執行工具」。整個流程不是寫死的管線，而是模型一步步決定的。</p>
     </>),
   },
@@ -191,8 +192,8 @@ export const steps: Step[] = [
     ownership: true,
     desc: (<>
       <p>這是建置建議，不是定論：以 <b>Claude Agent SDK</b> 為底。它就是 Claude Code 背後的 Harness，迴圈、壓縮、權限、hooks、子代理、技能、MCP 都已經有了。</p>
-      <p><span style={{ color: "#5ec8f2" }}>藍色</span>＝SDK 現成；<span style={{ color: "#f2b84b" }}>金色</span>＝Claude Film 自建；<span style={{ color: "#6ee7a8" }}>綠色</span>＝SDK 給機制、Film 填內容。</p>
-      <p>Claude Film 真正的價值，集中在金色和綠色：<b>劇本工具、規則內容、記憶結構</b>。</p>
+      <p>看每台機器腳下的底板：<b>光面</b>＝SDK 現成；<b>滿刻線</b>＝Claude Film 自建；<b>半刻線</b>＝SDK 給機制、Film 填內容。右側面板用顏色標同一件事：<span style={{ color: "#5ec8f2" }}>藍色</span>＝SDK、<span style={{ color: "#f2b84b" }}>金色</span>＝Film、<span style={{ color: "#6ee7a8" }}>綠色</span>＝兩者。</p>
+      <p>Claude Film 真正的價值，集中在有刻線的那些：<b>劇本工具、規則內容、記憶結構</b>。</p>
     </>),
   },
 ];

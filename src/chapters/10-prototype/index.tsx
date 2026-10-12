@@ -1,5 +1,5 @@
 import ChapterStage from "../../components/ChapterStage";
-import Scene from "./Scene";
+import PrototypeFigure from "./figure/Figure";
 import Article from "./Article";
 import { FLOORS, steps } from "./steps";
 
@@ -8,7 +8,7 @@ export default function PrototypeChapter() {
     <>
       <ChapterStage
         steps={steps}
-        scene={(step, i) => <Scene step={step} stepIndex={i} />}
+        scene={(_, i) => <div className="ch10-fig-wrap"><PrototypeFigure steps={steps} index={i} /></div>}
         panelTitle="claude_film.py（對應片段）"
         panelMeta={(step) => {
           const f = FLOORS.find((x) => x.id === step.focus);

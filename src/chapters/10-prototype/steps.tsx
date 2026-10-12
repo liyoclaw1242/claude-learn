@@ -1,7 +1,7 @@
 import type { BaseStep } from "../../components/ChapterStage";
 import { between } from "./code";
 
-/** 原型的八層樓，由下往上蓋；07 是虛線的延伸層 */
+/** 原型抽屜塔的八層托盤，由下往上裝；07 是虛線的延伸層 */
 export type FloorId = "f01" | "f02" | "f03" | "f04" | "f05" | "f06" | "f07" | "f08";
 
 export type Floor = { id: FloorId; ch: string; name: string; code: string; color: string; ghost?: boolean };
@@ -17,15 +17,15 @@ export const FLOORS: Floor[] = [
   { id: "f08", ch: "08", name: "長期記憶", code: "remember() · memory/notes.md", color: "#9fd8f0" },
 ];
 
-/** 封包可以經過的地點 */
+/** 卡片可以停靠的站：導軌上的各站，或升降梯送到的樓層 */
 export type Spot = "director" | "disk" | "model" | "sub" | FloorId;
 
 export type Step = BaseStep & {
-  /** 已經蓋好的樓層 */
+  /** 已經裝進塔裡的托盤 */
   built: FloorId[];
-  /** 本步驟的焦點樓層 */
+  /** 本步驟拉出的托盤 */
   focus?: FloorId;
-  /** 封包沿這些地點循環飛行 */
+  /** 卡片沿這些站循環移動（滑台走導軌、升降梯上下樓層） */
   flow?: Spot[];
   /** 右側面板顯示的程式碼片段 */
   snippet: string;
@@ -36,13 +36,13 @@ const upTo = (id: FloorId) => ALL.slice(0, ALL.indexOf(id) + 1);
 
 export const steps: Step[] = [
   {
-    title: "一個檔案，八層樓",
+    title: "一個檔案，八層托盤",
     built: [],
     snippet: between('"""claude_film.py', "class ToolError"),
     desc: (<>
       <p>最後一章，把前面九章的機制組成一支<b>可以真的跑起來</b>的 Python 程式：<code>claude_film.py</code>，大約 290 行。</p>
-      <p>它是一棟八層樓的建築，每一層對應一章。左邊是導演（你在終端機打字）和磁碟上的劇本，右邊是模型。</p>
-      <p>接下來一層一層蓋上去，右側面板會顯示那一層的程式碼。</p>
+      <p>它是一座八層的抽屜塔，每一層托盤對應一章，<b>托盤的高度跟那段程式碼的行數成正比</b>。左邊是導演的終端台（你在這裡打字）和 <code>series/</code> 檔案櫃，右邊是模型機櫃；前方導軌上的滑台和塔邊的升降梯，負責把卡送到各站。</p>
+      <p>接下來一層一層裝進去，每一步拉出那一層托盤，右側面板會顯示那一層的程式碼。</p>
     </>),
   },
   {

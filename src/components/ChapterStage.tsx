@@ -80,7 +80,7 @@ function DesktopStage<S extends BaseStep>({ steps, scene, panel, panelTitle, pan
       <section className="stage">
         <div className="canvas-wrap">
           <div className="hud">
-            <Link to="/">← 目錄</Link>　拖曳旋轉 · 滾輪縮放 · ← → 切換步驟 · 空白鍵自動播放
+            <Link to="/">← 目錄</Link>　← → 切換步驟 · 空白鍵自動播放
           </div>
           {scene(step, cur)}
         </div>
