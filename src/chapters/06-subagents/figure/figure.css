@@ -1,0 +1,21 @@
+/* 第 06 章的等角圖卡：填滿場景區，依容器的寬高取較小者縮放 */
+.ch06-fig-wrap { position: absolute; inset: 0; container-type: size; display: grid; place-items: center; overflow: hidden; }
+.ch06-fig { width: min(100cqw - 32px, (100cqh - 150px) * 1.68); background: transparent; }
+.ch06-fig .iso-figure { margin: 0; }
+.ch06-fig .iso-plate { padding: 44px 20px; }
+.ch06-fig .iso-legend { font-size: 12px; margin-top: 10px; }
+@container (max-width: 560px) {
+  .ch06-fig { width: min(100cqw - 12px, (100cqh - 60px) * 1.5); }
+  .ch06-fig .iso-plate { padding: 26px 0 24px; overflow: hidden; }
+  /* 機器是扁長形，上下留白多：手機上把圖放大、裁掉留白（anatomy 建議 110–118%） */
+  .ch06-fig .iso-svg { width: 118%; margin: -3% -9%; }
+  .ch06-fig .iso-plate-corners { inset: 12px 12px; }
+  .ch06-fig .iso-plate-corner[data-corner="hint"] { display: none; }
+  .ch06-fig .iso-legend { display: none; }
+}
+
+/* 本站背景比 kit 預設更暗，線條調亮一階 */
+.ch06-fig.iso { --anatomy-hi: #e2e2e2; --anatomy-mid: #7d7d7d; --anatomy-lo: #4a4a4a; --anatomy-faint: #313131; }
+
+/* 手機版：讓出上方的章節列 */
+.m-figure .ch06-fig-wrap { top: 40px; }

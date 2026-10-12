@@ -23,19 +23,19 @@ export const KIND_NAME: Record<BlockKind, string> = {
 };
 
 export type Block = {
-  /** 相同 id 的方塊在步驟之間平滑變形 */
+  /** 相同 id 的卡在步驟之間平滑移動 */
   id: string;
   kind: BlockKind;
-  /** 3D 高度（示意比例） */
+  /** 卡的厚度（示意比例） */
   h: number;
   label: string;
   /** 面板裡顯示的內容摘錄 */
   text?: string;
-  /** 本步驟的焦點（發光 + 在 3D 中顯示標籤） */
+  /** 本步驟的焦點（亮起） */
   hot?: boolean;
-  /** 出問題的方塊（紅色） */
+  /** 出問題的卡（紅框） */
   warn?: boolean;
-  /** 發光但不顯示 3D 標籤（相鄰的薄方塊共用一個標籤） */
+  /** 舊場景用的標籤合併旗標（保留給面板） */
   noLabel?: boolean;
 };
 
@@ -130,7 +130,7 @@ export const steps: Step[] = [
     units: all("brief"),
     flights: [0, 1, 2].map((unit) => ({ kind: "brief" as const, unit })),
     desc: (<>
-      <p>三個子代理<b>同時</b>開工。每一組帶走的只有一份<b>任務說明</b>（藍色）。</p>
+      <p>三個子代理<b>同時</b>開工。每一組帶走的只有一份<b>任務說明</b>：前方導軌上的三台滑台各載一張薄卡，送進隔板另一側的工位。</p>
       <p>同一則回覆裡的多個工具呼叫可以平行執行，這就是第 01 章提過的平行 tool_use。</p>
     </>),
   },

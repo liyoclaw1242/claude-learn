@@ -25,10 +25,10 @@ export const KIND_NAME: Record<BlockKind, string> = {
 };
 
 export type Block = {
-  /** 相同 id 的方塊在步驟之間平滑變形 */
+  /** 相同 id 的卡在步驟之間平滑移動 */
   id: string;
   kind: BlockKind;
-  /** 3D 高度（示意比例，非實測 token） */
+  /** 卡的厚度（示意比例，非實測 token） */
   h: number;
   label: string;
 };
@@ -59,7 +59,7 @@ export type Anchor = "model" | "user" | { skill: string } | { block: string } | 
 
 export type Step = BaseStep & {
   ctx: Block[];
-  /** 這一步新加入或變動的方塊 */
+  /** 這一步新加入或變動的卡 */
   hot?: string[];
   /** 技能清單已進 context：卡匣亮起 */
   listed?: boolean;
@@ -71,7 +71,7 @@ export type Step = BaseStep & {
   loaded?: string[];
   /** 已接上的 MCP server 數量 */
   servers?: number;
-  /** 警示（紅框）的方塊 */
+  /** 警示（紅框）的卡 */
   warn?: string;
   /** 外框：Plugin 打包 */
   plugin?: boolean;
@@ -99,8 +99,8 @@ export const steps: Step[] = [
     title: "沒有擴充的 Claude Code",
     ctx: [SYS, TOOLS],
     desc: (<>
-      <p>中間的塔是 context，右上是模型。現在只有內建的 system prompt 和工具。</p>
-      <p>左邊是磁碟上的 <b>技能卡匣</b>，左下是還沒接上的 <b>外部系統</b>。</p>
+      <p>中間的卡架是 context（一張卡是一段內容，卡越厚佔越多），右後方是模型機櫃。現在架上只有內建的 system prompt 和工具。</p>
+      <p>左邊架上直立著磁碟上的 <b>技能卡匣</b>，書背插著名片；前方是你的按鍵盤；右邊是 MCP 插座面板和三台還沒接上的 <b>外部系統</b>。</p>
       <p>這章談三種把專業能力「插」進來的方式：<b>Skill</b>、<b>Slash command</b>、<b>MCP</b>，以及把它們打包的 <b>Plugin</b>。</p>
     </>),
   },
@@ -112,7 +112,7 @@ export const steps: Step[] = [
     showDesc: true,
     desc: (<>
       <p>開場時，Claude Code 掃描 <code>.claude/skills/</code>，但<b>只把每個技能的 name 和 description</b> 放進 context。</p>
-      <p>五個技能加起來也只佔一小條。全文還在磁碟上。</p>
+      <p>五個技能加起來也只佔一小條（卡架裡那張薄卡，書背名片亮起）。全文還在卡匣裡。</p>
       <p>這是第 02 章「按需讀取」的延伸：<b>先讓模型知道有什麼，需要時再拿。</b></p>
     </>),
   },

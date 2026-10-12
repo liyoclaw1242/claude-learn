@@ -1,5 +1,5 @@
 import ChapterStage from "../../components/ChapterStage";
-import Scene from "./Scene";
+import SkillsFigure from "./figure/Figure";
 import Article from "./Article";
 import { KIND_COLOR, KIND_NAME, SKILLS, steps, type Step } from "./steps";
 
@@ -39,7 +39,7 @@ export default function SkillsMcpChapter() {
     <>
       <ChapterStage
         steps={steps}
-        scene={(step, i) => <Scene step={step} stepIndex={i} />}
+        scene={(_, i) => <div className="ch07-fig-wrap"><SkillsFigure steps={steps} index={i} /></div>}
         panelTitle="技能狀態與 context 內容（示意）"
         panelMeta={(step) => `${step.ctx.length} 塊`}
         panel={(step) => <Panel step={step} />}

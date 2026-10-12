@@ -1,5 +1,5 @@
 import ChapterStage from "../../components/ChapterStage";
-import Scene from "./Scene";
+import SubagentsFigure from "./figure/Figure";
 import Article from "./Article";
 import { KIND_COLOR, KIND_NAME, UNITS, steps, type Block } from "./steps";
 
@@ -29,7 +29,7 @@ export default function SubagentsChapter() {
     <>
       <ChapterStage
         steps={steps}
-        scene={(step, i) => <Scene step={step} stepIndex={i} />}
+        scene={(_, i) => <div className="ch06-fig-wrap"><SubagentsFigure steps={steps} index={i} /></div>}
         panelTitle="各視窗的內容（示意）"
         panelMeta={(step) => `子代理 ${step.units.filter(Boolean).length} 個`}
         panel={(step) => (
