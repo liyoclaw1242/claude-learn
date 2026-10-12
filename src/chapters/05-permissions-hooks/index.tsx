@@ -1,5 +1,5 @@
 import ChapterStage from "../../components/ChapterStage";
-import Scene from "./Scene";
+import PermissionsFigure from "./figure/Figure";
 import Article from "./Article";
 import { COLORS, steps, type LogLine } from "./steps";
 
@@ -43,7 +43,7 @@ export default function PermissionsHooksChapter() {
     <>
       <ChapterStage
         steps={steps}
-        scene={(step, i) => <Scene step={step} stepIndex={i} />}
+        scene={(_, i) => <div className="ch05-fig-wrap"><PermissionsFigure steps={steps} index={i} /></div>}
         panelTitle="Harness 處理紀錄（示意）"
         panelMeta={(step) => (step.mode ? `模式：${step.mode}` : "")}
         panel={(step) => <HarnessLog log={step.log} />}

@@ -1,5 +1,5 @@
 import ChapterStage from "../../components/ChapterStage";
-import Scene from "./Scene";
+import ToolsFigure from "./figure/Figure";
 import Article from "./Article";
 import { steps } from "./steps";
 
@@ -17,7 +17,7 @@ export default function ToolsChapter() {
     <>
       <ChapterStage
         steps={steps}
-        scene={(step, i) => <Scene step={step} stepIndex={i} />}
+        scene={(_, i) => <div className="ch04-fig-wrap"><ToolsFigure steps={steps} index={i} /></div>}
         panelTitle="模型看到的 / 送出的 / 拿回來的"
         panelMeta={(step) => (step.focus ? step.focus.join(" · ") : "")}
         panel={(step) => (

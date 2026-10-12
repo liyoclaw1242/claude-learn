@@ -182,7 +182,7 @@ export default function Article() {
         </tbody>
       </table>
       <p>注意 <b>exit 1 不會擋</b>，要擋一定要 exit 2。這是寫 hook 最常見的坑。</p>
-      <p>前面 3D 場景第 7 步的角色年齡檢查，寫出來大概是這樣：</p>
+      <p>前面分揀線第 7 步的角色年齡檢查（升起擋板的那一步），寫出來大概是這樣：</p>
       <pre>{HOOK_PY}</pre>
       <p>hook 除了用 exit code，也可以在 stdout 輸出 JSON 做更細的決定，例如 <code>PreToolUse</code> 回傳 <code>permissionDecision</code>（<code>allow</code> / <code>deny</code> / <code>ask</code>）加上理由。
         但 hook 回傳 allow <b>不會</b>讓呼叫跳過 deny 和 ask 規則 —— 規則仍然是最後一道確定性的門。</p>

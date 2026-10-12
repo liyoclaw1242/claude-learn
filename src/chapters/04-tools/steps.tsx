@@ -6,7 +6,7 @@ export type ToolId =
 
 export type ToolDef = { id: ToolId; color: string; sub: string };
 
-/** 劇本工具（由粗到細排在場景下方一排） */
+/** 劇本工具：目錄櫃裡一個抽屜一個 */
 export const TOOLS: ToolDef[] = [
   { id: "get_outline", color: "#5ec8f2", sub: "每場一行的大綱" },
   { id: "find_mentions", color: "#5ec8f2", sub: "找角色 / 關鍵字出現在哪幾場" },
@@ -21,7 +21,7 @@ export type ResultKind = "ok" | "big" | "error" | "defs";
 
 export type Result = {
   id: string;
-  /** 示意的 token 量（決定方塊高度），不是實測值 */
+  /** 示意的 token 量（決定結果卡的厚度），不是實測值 */
   size: number;
   kind: ResultKind;
   label: string;
@@ -34,12 +34,12 @@ export type Flight = { to: ToolId; delay: number; error?: boolean };
 export type Step = BaseStep & {
   /** 目前可見的工具 */
   tools: ToolId[];
-  /** 本步被呼叫的工具（發光、顯示說明） */
+  /** 本步被呼叫的工具（顯示說明） */
   focus?: ToolId[];
   /** 模型頭上的 tool_use 文字 */
   call?: string;
   flights?: Flight[];
-  /** 右側「回到 context 的東西」塔 */
+  /** 模型機櫃前的卡架：回到 context 的東西 */
   results: Result[];
   /** 顯示一排 MCP 工具 */
   mcp?: boolean;
@@ -61,7 +61,7 @@ export const steps: Step[] = [
     desc: (<>
       <p>模型從來沒有「看過」工具的程式碼。它拿到的只有每個工具的<b>名稱、說明（description）、參數格式（input_schema）</b>。</p>
       <p>它靠這三樣決定：要不要用工具、用哪一個、參數填什麼。所以<b>工具說明就是介面文件</b>，而讀者是模型。</p>
-      <p>下面一排是 Claude Film 可能會有的劇本工具，由粗到細各有分工。</p>
+      <p>左邊的目錄櫃是 Claude Film 可能會有的劇本工具：<b>一個抽屜一個工具</b>，抽屜正面插著它的說明卡，卡越高代表說明寫得越完整。右後方是模型機櫃，前面的卡架放「回到 context 的東西」。</p>
     </>),
     panelDef: `{
   "name": "find_mentions",
@@ -87,7 +87,7 @@ export const steps: Step[] = [
     flights: [{ to: "script_tool", delay: 0, error: true }],
     results: [{ id: "err1", size: 1.5, kind: "error", label: "is_error：未知 action" }],
     desc: (<>
-      <p>換成一個「萬用工具」：名稱 <code>script_tool</code>、說明只有「處理劇本」、參數是自由格式的 <code>action</code>。</p>
+      <p>換成一個「萬用工具」：名稱 <code>script_tool</code>、說明只有「處理劇本」、參數是自由格式的 <code>action</code>。目錄櫃左下那個抽屜只插著一張幾乎空白的小卡，其他抽屜這一步都不能用。</p>
       <p>模型不知道 action 有哪些值，只能猜，猜錯就得到錯誤，再猜一次。每一次猜錯都是一次往返、一段多餘的 context。</p>
       <p>對人類工程師來說這是「文件沒寫」；對模型來說，這就是<b>它唯一的文件</b>。</p>
     </>),
@@ -136,7 +136,7 @@ export const steps: Step[] = [
     results: [FULL_GHOST, { id: "fm", size: 1, kind: "ok", label: "第 3、7、12、22 場" }],
     desc: (<>
       <p>同一個問題，換成 <code>find_mentions</code>：回傳只有場次編號和那一行文字。</p>
-      <p>右邊的虛線框是剛才讀全文的大小。<b>工具的粒度，直接決定了每個問題要付多少 context。</b></p>
+      <p>卡架上的點線框是剛才讀全文的大小，實際落下的只有一張薄卡。<b>工具的粒度，直接決定了每個問題要付多少 context。</b></p>
     </>),
     panelDef: `{
   "name": "find_mentions",
