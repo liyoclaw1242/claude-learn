@@ -202,3 +202,6 @@ th { background: #161a24; }
 }
 .m-sheet-body { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; scrollbar-width: thin; scrollbar-color: #2c3244 transparent; }
 .m-sheet-body article { padding-top: 20px; }
+
+/* 首頁的課程分區 */
+.course-intro { color: var(--muted); font-size: 14px; margin-top: -4px; }

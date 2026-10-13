@@ -1,0 +1,50 @@
+/* 地圖生成課程共用：圖卡版面（同 Claude 課程）、方柱的特殊狀態、狀態面板的文字地圖 */
+.mg-fig-wrap { position: absolute; inset: 0; container-type: size; display: grid; place-items: center; overflow: hidden; }
+.mg-fig { width: min(100cqw - 32px, (100cqh - 150px) * var(--ar, 1.6)); }
+.mg-fig .iso-figure { margin: 0; }
+.mg-fig .iso-plate { padding: 44px 20px; }
+.mg-fig .iso-legend { font-size: 12px; margin-top: 10px; }
+.mg-fig.iso { --anatomy-hi: #e2e2e2; --anatomy-mid: #7d7d7d; --anatomy-lo: #4a4a4a; --anatomy-faint: #313131; }
+
+/* 水面：藍邊、頂面略帶藍 */
+.mg-water > .iso-edge { stroke: var(--anatomy-blue); }
+.mg-water > .iso-top { fill: #141b27; }
+/* 警示（矛盾、奇數度、落差過大） */
+.mg-red > .iso-edge { stroke: var(--anatomy-red); }
+.mg-green > .iso-edge { stroke: var(--anatomy-green); }
+/* 暗一階（不用透明度，避免看穿） */
+.mg-dim > .iso-top { fill: var(--anatomy-shade-1); }
+.mg-dim > .iso-shade { fill: var(--anatomy-shade-0); }
+.mg-dim > .iso-edge { stroke: var(--anatomy-lo); }
+
+@container (max-width: 560px) {
+  .mg-fig { width: min(100cqw - 8px, (100cqh - 56px) * var(--ar, 1.6)); }
+  .mg-fig .iso-plate { padding: 26px 0 22px; overflow: hidden; }
+  .mg-fig .iso-plate-corners { inset: 12px 12px; }
+  .mg-fig .iso-plate-corner[data-corner="hint"] { display: none; }
+  .mg-fig .iso-legend { display: none; }
+  /* 棋盤四周留白多：手機上放大、裁掉留白 */
+  .mg-fig .iso-svg { width: 116%; margin: -4% -8%; }
+}
+.m-figure .mg-fig-wrap { top: 40px; }
+
+/* ---------- 狀態面板 ---------- */
+.mg-grid {
+  margin: 8px 0; padding: 10px 12px; font-size: 12px; line-height: 1.25; letter-spacing: .12em;
+  background: #0f1219; border: 1px solid var(--line); border-radius: 6px; overflow-x: auto; white-space: pre;
+}
+.mg-grid .hl { color: #fff; background: #2a3550; border-radius: 2px; }
+.mg-grid .wall { color: #c9ced9; }
+.mg-grid .floor { color: #4a5268; }
+.mg-grid .red { color: var(--ctx); }
+.mg-grid .blue { color: #6b9bff; }
+.mg-grid .green { color: var(--tool); }
+.mg-grid .amber { color: var(--user); }
+.mg-kv { display: grid; grid-template-columns: auto 1fr; gap: 2px 14px; margin: 8px 0; font-size: 12px; font-family: var(--mono); }
+.mg-kv dt { color: var(--muted); }
+.mg-kv dd { margin: 0; }
+.m-state .mg-grid { font-size: 10.5px; letter-spacing: .08em; }
+.mg-blue > .iso-edge { stroke: var(--anatomy-blue); }
+/* 亮起時 data-lit 包在外層 g 上（逐條點亮的回路） */
+g[data-lit] > .iso-solid > .iso-edge { stroke: var(--anatomy-lit); }
+g[data-lit] > .iso-solid > .iso-top { fill: var(--anatomy-lit-top); }
