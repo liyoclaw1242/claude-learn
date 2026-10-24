@@ -70,40 +70,8 @@ table { border-collapse: collapse; width: 100%; margin: 16px 0; }
 th, td { border: 1px solid var(--line); padding: 8px 10px; text-align: left; vertical-align: top; }
 th { background: #161a24; }
 
-/* ---------- 首頁 ---------- */
-.chapters { list-style: none; padding: 0; }
-.chapters li {
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  padding: 14px 18px;
-  margin: 12px 0;
-  background: var(--panel);
-}
-.chapters li.todo { opacity: .45; }
-.chapters .no { font-family: var(--mono); color: var(--muted); margin-right: 10px; }
-.chapters .film { display: block; color: var(--muted); font-size: 13px; }
-
-/* ---------- 章節舞台 ---------- */
-.stage { display: grid; grid-template-columns: 1fr 440px; height: 100vh; border-bottom: 1px solid var(--line); }
-.canvas-wrap { position: relative; overflow: hidden; }
-.hud { position: absolute; left: 16px; top: 12px; color: var(--muted); font-size: 12px; z-index: 1; }
-.hud a { color: var(--muted); }
-
-
-.panel { background: var(--panel); border-left: 1px solid var(--line); display: flex; flex-direction: column; min-height: 0; }
-.panel header { padding: 16px 18px 8px; }
-.panel .stepno { font-family: var(--mono); color: var(--muted); font-size: 12px; }
-.panel h3 { margin: 4px 0 6px; font-size: 18px; }
-.panel .desc { padding: 0 18px; font-size: 14px; }
-.panel .desc p { margin: 6px 0; }
-.controls { display: flex; gap: 8px; padding: 12px 18px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-.controls button {
-  flex: 1; background: #1b2030; color: var(--text); border: 1px solid #2c3244;
-  border-radius: 6px; padding: 7px 0; cursor: pointer; font-size: 13px;
-}
-.controls button:hover { background: #242a3d; }
+/* ---------- 狀態面板（各課共用） ---------- */
 .msgs-title { padding: 10px 18px 4px; font-size: 12px; color: var(--muted); display: flex; justify-content: space-between; }
-.msgs { flex: 1; overflow-y: auto; padding: 0 18px 18px; min-height: 0; }
 .msg { border: 1px solid var(--line); border-radius: 6px; margin: 8px 0; padding: 8px 10px; font-family: var(--mono); font-size: 12px; line-height: 1.5; white-space: pre-wrap; word-break: break-all; }
 .msg .role { font-weight: 700; }
 .msg.new { border-color: var(--ctx); box-shadow: 0 0 0 1px var(--ctx) inset; }
@@ -116,7 +84,7 @@ th { background: #161a24; }
 .meter-bar > div:not(.meter-threshold) { height: 100%; transition: width .5s, opacity .5s; }
 .meter-threshold { position: absolute; top: 0; bottom: 0; width: 2px; background: var(--ctx); }
 
-/* ---------- 手機版（≤ 768px）：全螢幕的圖 + 步驟卡 ---------- */
+/* ---------- 窄螢幕：附錄文章 ---------- */
 @media (max-width: 768px) {
   body { font-size: 14px; line-height: 1.7; }
   article { padding: 28px 16px 80px; }
@@ -126,82 +94,5 @@ th { background: #161a24; }
   table { display: block; overflow-x: auto; font-size: 13px; }
 
 
-  /* 首頁：卡片式清單，整張可點 */
-  .chapters li { padding: 0; margin: 10px 0; }
-  .chapters li a, .chapters li.todo { display: block; }
-  .chapters li > a { padding: 12px 14px; text-decoration: none; color: var(--text); }
-  .chapters li > a .no { color: var(--harness); }
-  .chapters li > a .t { display: block; font-weight: 600; line-height: 1.45; }
-  .chapters .film { font-size: 12px; margin-top: 2px; }
 }
 
-.m-stage {
-  position: fixed; inset: 0; height: 100dvh;
-  display: flex; flex-direction: column;
-  background: var(--bg); overflow: hidden;
-}
-/* isolation：3D 標籤各自帶 z-index，關在圖區內，才不會蓋到步驟卡和全文抽屜 */
-.m-figure { position: relative; flex: 0 0 50%; min-height: 0; overflow: hidden; touch-action: pan-y; isolation: isolate; }
-.m-figure canvas { touch-action: pan-y !important; }
-.m-hud {
-  position: absolute; left: 0; right: 0; top: 0; z-index: 2;
-  display: flex; align-items: center; gap: 10px;
-  padding: max(8px, env(safe-area-inset-top)) 12px 8px;
-  background: linear-gradient(#0b0d12ee, #0b0d1200);
-  font-size: 13px;
-}
-.m-hud a { color: var(--text); text-decoration: none; font-size: 18px; line-height: 1; padding: 4px 6px; }
-.m-chapter { flex: 1; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.m-hud button, .m-sheet-bar button {
-  background: #1b2030; color: var(--text); border: 1px solid #2c3244;
-  border-radius: 999px; padding: 4px 12px; font-size: 13px;
-}
-
-.m-card {
-  flex: 1; min-height: 0; display: flex; flex-direction: column;
-  background: var(--panel); border-top: 1px solid var(--line);
-  border-radius: 14px 14px 0 0; margin-top: -10px; position: relative; z-index: 1;
-  padding-bottom: env(safe-area-inset-bottom);
-}
-.m-card header { padding: 10px 16px 2px; }
-.m-card-top { display: flex; align-items: center; justify-content: space-between; }
-.m-card .stepno { font-family: var(--mono); color: var(--muted); font-size: 11px; }
-.m-card h3 { margin: 4px 0 2px; font-size: 16px; line-height: 1.4; }
-.m-tabs { display: flex; background: #0f1219; border: 1px solid var(--line); border-radius: 999px; padding: 2px; }
-.m-tabs button {
-  background: none; border: 0; color: var(--muted); font-size: 12px;
-  padding: 3px 12px; border-radius: 999px;
-}
-.m-tabs button.on { background: #242a3d; color: var(--text); }
-.m-card-body {
-  flex: 1; min-height: 0; overflow-y: auto; padding: 0 16px 6px; -webkit-overflow-scrolling: touch;
-  scrollbar-width: thin; scrollbar-color: #2c3244 transparent;
-}
-.m-card-body .desc { font-size: 14px; }
-.m-card-body .desc p { margin: 6px 0; }
-.m-card-body .msgs-title { padding: 6px 0 2px; }
-.m-state .msg { font-size: 11px; }
-.m-dots { display: flex; justify-content: center; gap: 6px; padding: 6px 0 2px; }
-.m-dots span { width: 6px; height: 6px; border-radius: 50%; background: #2c3244; transition: all .25s; }
-.m-dots span.done { background: #4a5370; }
-.m-dots span.on { width: 18px; border-radius: 3px; background: var(--harness); }
-.m-card .controls { border-bottom: 0; padding: 8px 16px 10px; }
-.m-card .controls button { padding: 9px 0; font-size: 14px; }
-
-.m-sheet {
-  position: fixed; inset: 0; z-index: 10; display: flex; flex-direction: column;
-  background: var(--bg); transform: translateY(100%); transition: transform .32s cubic-bezier(.2, .8, .2, 1);
-  visibility: hidden;
-}
-.m-sheet.open { transform: none; visibility: visible; }
-.m-sheet:not(.open) { transition: transform .32s cubic-bezier(.2, .8, .2, 1), visibility 0s .32s; }
-.m-sheet-bar {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: max(10px, env(safe-area-inset-top)) 14px 10px;
-  border-bottom: 1px solid var(--line); background: var(--panel); color: var(--muted); font-size: 13px;
-}
-.m-sheet-body { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; scrollbar-width: thin; scrollbar-color: #2c3244 transparent; }
-.m-sheet-body article { padding-top: 20px; }
-
-/* 首頁的課程分區 */
-.course-intro { color: var(--muted); font-size: 14px; margin-top: -4px; }

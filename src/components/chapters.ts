@@ -25,7 +25,14 @@ export const mapChapters: Chapter[] = [
   { no: "07", title: "總成：一張完整的地圖", film: "五種演算法各管哪一層，怎麼串成一條管線", path: "/map/07-pipeline" },
 ];
 
-export type Course = { id: string; title: string; intro: string; chapters: Chapter[] };
+export type Course = {
+  id: string;
+  title: string;
+  intro: string;
+  chapters: Chapter[];
+  /** 封面：書脊與封面底色、冊數、封面副標 */
+  cover: { color: string; vol: string; lines: string[]; tagline: string; topics: string };
+};
 
 export const courses: Course[] = [
   {
@@ -33,14 +40,29 @@ export const courses: Course[] = [
     title: "Claude Code 原理筆記",
     intro: "理解 Claude Code 的核心機制，最後映射成一套給影視編劇用的 Claude Film。",
     chapters,
+    cover: { color: "#c8623f", vol: "VOL. 1", lines: ["Claude Code", "原理筆記"], tagline: "模型只是一個函數，迴圈、上下文與工具才是 Agent。", topics: "迴圈 · 上下文 · 工具 · 權限 · 記憶" },
   },
   {
     id: "map",
     title: "程序化地圖生成",
     intro: "從一張數字表開始，一路做到洞穴、地形、地牢、巡邏路線與規則拼圖。每一步圖上跑的都是真正的演算法。",
     chapters: mapChapters,
+    cover: { color: "#3f6b5c", vol: "VOL. 2", lines: ["程序化", "地圖生成"], tagline: "一顆種子，長出洞穴、地形、地牢與城鎮。", topics: "元胞 · 噪聲 · BSP · 歐拉 · WFC" },
   },
 ];
 
+export const bookPath = (course: Course) => `/book/${course.id}`;
+
+/** 依路由找章節與它所在的書、前後章 */
+export function locate(path: string) {
+  for (const course of courses) {
+    const i = course.chapters.findIndex((c) => c.path === path);
+    if (i >= 0) {
+      return { course, chapter: course.chapters[i], index: i, prev: course.chapters[i - 1], next: course.chapters[i + 1] };
+    }
+  }
+  return null;
+}
+
 /** 依路由找章節（章節頁標題列用） */
-export const chapterByPath = (path: string) => courses.flatMap((c) => c.chapters).find((c) => c.path === path);
+export const chapterByPath = (path: string) => locate(path)?.chapter;
